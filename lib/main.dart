@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import './user.dart';
 import './mainPageButton.dart';
+import './alphaListTile.dart';
 
 void main() => runApp(MyApp());
 
@@ -42,9 +43,8 @@ class MyApp extends StatelessWidget {
             color: textPurple,
           ),
         ),
-
         iconTheme: IconThemeData(
-            color: mediumBlue,
+          color: mediumBlue,
         ),
       ),
       home: MyHomePage(title: 'Alpha'),
@@ -71,23 +71,36 @@ class MyHomePage extends StatefulWidget {
   _MyHomePageState createState() => _MyHomePageState();
 }
 
-class AlphaListTile extends StatelessWidget {
-  final String title;
-  final GestureTapCallback onTap;
-
-  const AlphaListTile({Key key, this.title, this.onTap}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return ListTile(
-      title: Text(
-        this.title,
-        textAlign: TextAlign.left,
-        style: Theme.of(context).textTheme.display1,
-      ),
-      onTap: this.onTap,
-    );
-  }
+Future<void> _notImplemented(BuildContext context) {
+  final textTheme = Theme.of(context).textTheme;
+  return showDialog<void>(
+    context: context,
+    barrierDismissible: false, // user must tap button!
+    builder: (BuildContext context) {
+      return AlertDialog(
+        title: Text(
+          "Sorry",
+          style: textTheme.subhead,
+        ),
+        content: Text(
+          'This feature is not yet implemented',
+          style: textTheme.display1,
+        ),
+        actions: <Widget>[
+          FlatButton(
+            child: Text(
+              'Oh well',
+              style: textTheme.display1,
+            ),
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+          ),
+        ],
+        elevation: 24.0,
+      );
+    },
+  );
 }
 
 class _MyHomePageState extends State<MyHomePage> {
@@ -142,7 +155,9 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
               AlphaListTile(
                 title: "Receive \$",
-                onTap: () {},
+                onTap: () {
+                  _notImplemented(context);
+                },
               ),
               AlphaListTile(
                 title: "Earnings",
@@ -150,15 +165,21 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
               AlphaListTile(
                 title: "Add Service",
-                onTap: () {},
+                onTap: () {
+                  _notImplemented(context);
+                },
               ),
               AlphaListTile(
                 title: "Book Service",
-                onTap: () {},
+                onTap: () {
+                  _notImplemented(context);
+                },
               ),
               AlphaListTile(
                 title: "Calendar",
-                onTap: () {},
+                onTap: () {
+                  _notImplemented(context);
+                },
               ),
               AlphaListTile(
                 title: "Messages",
@@ -206,6 +227,9 @@ class _MyHomePageState extends State<MyHomePage> {
                 MainPageButton(
                   title: "Receive \$",
                   image: Image.asset("images/receive.png"),
+                  onPressed: () {
+      _notImplemented(context);
+      },
                 ),
                 MainPageButton(
                   title: "Earnings",
@@ -214,14 +238,23 @@ class _MyHomePageState extends State<MyHomePage> {
                 MainPageButton(
                   title: "Add Service",
                   image: Image.asset("images/add_service.png"),
+                  onPressed: () {
+                    _notImplemented(context);
+                  },
                 ),
                 MainPageButton(
                   title: "Book Service",
                   image: Image.asset("images/book_service.png"),
+                  onPressed: () {
+                    _notImplemented(context);
+                  },
                 ),
                 MainPageButton(
                   title: "Calendar",
                   image: Image.asset("images/calendar.png"),
+                  onPressed: () {
+                    _notImplemented(context);
+                  },
                 ),
                 MainPageButton(
                   title: "Messages",

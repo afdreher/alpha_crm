@@ -5,8 +5,9 @@ import './AlphaElevation.dart';
 class MainPageButton extends StatelessWidget {
   final String title;
   final Image image;
+  final GestureTapCallback onPressed;
 
-  const MainPageButton({Key key, this.title, this.image}) : super(key: key);
+  const MainPageButton({Key key, this.title, this.image, this.onPressed}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -50,7 +51,7 @@ class MainPageButton extends StatelessWidget {
         child: FlatButton(
           padding: EdgeInsets.all(0),
           color: Theme.of(context).scaffoldBackgroundColor,
-          onPressed: () {},
+          onPressed: onPressed,
           child: Stack(
             children: children,
           ),
