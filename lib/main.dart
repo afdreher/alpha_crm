@@ -1,26 +1,53 @@
 import 'package:flutter/material.dart';
+import './user.dart';
+import './mainPageButton.dart';
 
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
+  final Color textPurple = Color.fromRGBO(46, 10, 86, 1.0);
+  final Color backgroundBlue = Color.fromRGBO(221, 233, 243, 1.0);
+  final Color accentBlue = Color.fromRGBO(202, 221, 239, 1.0);
+  final Color mediumBlue = Color.fromRGBO(54, 76, 114, 1.0);
+
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Alpha CRM Demo',
       theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
-        primarySwatch: Colors.blue,
+        fontFamily: 'Montserrat',
+        primarySwatch: Colors.lightBlue,
+        accentColor: Colors.deepPurple,
+        scaffoldBackgroundColor: backgroundBlue,
+        textTheme: TextTheme(
+          headline: TextStyle(
+            fontSize: 80.0,
+            fontWeight: FontWeight.bold,
+            color: textPurple,
+          ),
+          subhead: TextStyle(
+            fontSize: 32.0,
+            fontWeight: FontWeight.w800,
+            color: textPurple,
+          ),
+          display1: TextStyle(
+            fontSize: 22.0,
+            fontWeight: FontWeight.w500,
+            color: textPurple,
+          ),
+          display2: TextStyle(
+            fontSize: 22.0,
+            fontWeight: FontWeight.w500,
+            color: textPurple,
+          ),
+        ),
+
+        iconTheme: IconThemeData(
+            color: mediumBlue,
+        ),
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: MyHomePage(title: 'Alpha'),
     );
   }
 }
@@ -38,25 +65,32 @@ class MyHomePage extends StatefulWidget {
   // always marked "final".
 
   final String title;
+  final User user = User();
 
   @override
   _MyHomePageState createState() => _MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
+class AlphaListTile extends StatelessWidget {
+  final String title;
+  final GestureTapCallback onTap;
 
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
+  const AlphaListTile({Key key, this.title, this.onTap}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return ListTile(
+      title: Text(
+        this.title,
+        textAlign: TextAlign.left,
+        style: Theme.of(context).textTheme.display1,
+      ),
+      onTap: this.onTap,
+    );
   }
+}
 
+class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     // This method is rerun every time setState is called, for instance as done
@@ -67,45 +101,137 @@ class _MyHomePageState extends State<MyHomePage> {
     // than having to individually change instances of widgets.
     return Scaffold(
       appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
+        // Set the app bar to transparent to just have the hamburger button and
+        // title
+        title: Text(""),
+        backgroundColor: Colors.transparent,
+        elevation: 0.0,
+        iconTheme: Theme.of(context).iconTheme,
       ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
+      drawer: FractionallySizedBox(
+        alignment: Alignment.centerLeft,
+        widthFactor: 0.7,
+        heightFactor: 1.0,
+        child: Drawer(
+          child: ListView(
+            // Important: Remove any padding from the ListView.
+            padding: EdgeInsets.zero,
+            children: <Widget>[
+              DrawerHeader(
+                child: Column(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: <Widget>[
+                    Expanded(
+                      child: Center(
+                        child: Image.asset(
+                          "images/logo.png",
+                          fit: BoxFit.contain,
+                        ),
+                      ),
+                    ),
+                    Text(
+                      "Alpha",
+                      style: Theme.of(context).textTheme.subhead,
+                    ),
+                  ],
+                ),
+                decoration: BoxDecoration(
+                  color: Theme.of(context).scaffoldBackgroundColor,
+                ),
+              ),
+              AlphaListTile(
+                title: "Receive \$",
+                onTap: () {},
+              ),
+              AlphaListTile(
+                title: "Earnings",
+                onTap: () {},
+              ),
+              AlphaListTile(
+                title: "Add Service",
+                onTap: () {},
+              ),
+              AlphaListTile(
+                title: "Book Service",
+                onTap: () {},
+              ),
+              AlphaListTile(
+                title: "Calendar",
+                onTap: () {},
+              ),
+              AlphaListTile(
+                title: "Messages",
+                onTap: () {},
+              ),
+            ],
+          ),
+        ),
+      ),
+      body: SafeArea(
         child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Invoke "debug painting" (press "p" in the console, choose the
-          // "Toggle Debug Paint" action from the Flutter Inspector in Android
-          // Studio, or the "Toggle Debug Paint" command in Visual Studio Code)
-          // to see the wireframe for each widget.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisSize: MainAxisSize.max,
+          mainAxisAlignment: MainAxisAlignment.end,
           children: <Widget>[
-            Text(
-              'You have pushed the button this many times:',
+            Expanded(
+              child: Container(
+                margin: const EdgeInsets.only(left: 20.0),
+                alignment: Alignment.centerLeft,
+                child: new Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Text(
+                      "WELCOME BACK",
+                      textAlign: TextAlign.right,
+                      style: Theme.of(context).textTheme.display1,
+                    ),
+                    Text(
+                      widget.user.name,
+                      textAlign: TextAlign.left,
+                      style: Theme.of(context).textTheme.headline,
+                    ),
+                  ],
+                ),
+              ),
             ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.display1,
+            GridView.count(
+              padding: const EdgeInsets.symmetric(vertical: 10.0),
+              shrinkWrap: true,
+              childAspectRatio: 1.4,
+              // Create a grid with 2 columns. If you change the scrollDirection
+              // to horizontal, this produces 2 rows.
+              crossAxisCount: 2,
+              children: <Widget>[
+                MainPageButton(
+                  title: "Receive \$",
+                  image: Image.asset("images/receive.png"),
+                ),
+                MainPageButton(
+                  title: "Earnings",
+                  image: Image.asset("images/earnings.png"),
+                ),
+                MainPageButton(
+                  title: "Add Service",
+                  image: Image.asset("images/add_service.png"),
+                ),
+                MainPageButton(
+                  title: "Book Service",
+                  image: Image.asset("images/book_service.png"),
+                ),
+                MainPageButton(
+                  title: "Calendar",
+                  image: Image.asset("images/calendar.png"),
+                ),
+                MainPageButton(
+                  title: "Messages",
+                  image: Image.asset("images/messages.png"),
+                ),
+              ],
             ),
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
