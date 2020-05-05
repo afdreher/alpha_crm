@@ -2,10 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="63355ac8-c2dd-4fa8-9e8f-e95438b491a1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/lib/AlphaListTile.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/alerts.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/main_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/AlphaElevation.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/alpha_elevation.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/AlphaListTile.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/alpha_list_tile.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/mainPageButton.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/mainPageButton.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/mainPageButton.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main_page_button.dart" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
