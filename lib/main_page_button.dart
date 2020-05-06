@@ -49,9 +49,11 @@ class MainPageButton extends StatelessWidget {
     return Container(
       margin: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
       child: AlphaElevation(
+        direction: "up",
+        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+        borderRadius: 6.0,
         child: FlatButton(
           padding: EdgeInsets.all(0),
-          color: Theme.of(context).scaffoldBackgroundColor,
           onPressed: onPressed,
           child: Stack(
             children: children,

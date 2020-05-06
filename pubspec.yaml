@@ -19,8 +19,11 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+
   auto_size_text: ^2.1.0
+  intl: ^0.16.1
   path_provider: ^1.6.7
+  provider: ^4.0.5
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -58,6 +61,9 @@ flutter:
     - images/earnings.png
     - images/messages.png
     - images/receive.png
+    - images/icons/magnifying_glass.png
+    - images/icons/line.png
+    - images/icons/pie.png
 
   # For details regarding adding assets from package dependencies, see
   # https://flutter.dev/assets-and-images/#from-packages
