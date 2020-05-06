@@ -1,10 +1,10 @@
+import 'package:alphacrm/theme.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import 'alerts.dart';
 import 'alpha_drawer.dart';
-import 'earnings_page.dart';
 import 'main_page_button.dart';
 import 'user_model.dart';
 
@@ -58,7 +58,7 @@ class _MainPageState extends State<MainPage> {
                     Text(
                       "WELCOME BACK",
                       textAlign: TextAlign.right,
-                      style: Theme.of(context).textTheme.display1,
+                      style: welcomeStyle,
                     ),
                     Consumer<UserModel>(
                       builder: (context, user, child) {
@@ -67,7 +67,7 @@ class _MainPageState extends State<MainPage> {
                           child: AutoSizeText(
                             user.name,
                             textAlign: TextAlign.left,
-                            style: Theme.of(context).textTheme.headline,
+                            style: nameStyle,
                             maxLines: 1,
                           ),
                         );

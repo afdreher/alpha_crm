@@ -2,6 +2,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 
 import 'alpha_elevation.dart';
+import 'theme.dart';
 
 class MainPageButton extends StatelessWidget {
   final String title;
@@ -23,7 +24,7 @@ class MainPageButton extends StatelessWidget {
           child: AutoSizeText(
             this.title,
             textAlign: TextAlign.left,
-            style: Theme.of(context).textTheme.display2,
+            style: mainButtonStyle,
             maxLines: 1,
           ),
         ),

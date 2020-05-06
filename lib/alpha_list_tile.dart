@@ -12,7 +12,7 @@ class AlphaListTile extends StatelessWidget {
       title: Text(
         this.title,
         textAlign: TextAlign.left,
-        style: Theme.of(context).textTheme.display1,
+        style: Theme.of(context).textTheme.button,
       ),
       onTap: this.onTap,
     );

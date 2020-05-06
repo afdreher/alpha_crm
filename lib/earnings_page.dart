@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
+import 'theme.dart';
 import 'user_model.dart';
 
 class EarningsPage extends StatefulWidget {
@@ -29,11 +30,8 @@ class EarningsPage extends StatefulWidget {
 class EarningsCell extends StatelessWidget {
   final String title;
   final String value;
-  final Color textColor;
 
-  const EarningsCell({Key key, this.title,
-    this.value,
-  this.textColor}) : super(key: key);
+  const EarningsCell({Key key, this.title, this.value}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -41,19 +39,11 @@ class EarningsCell extends StatelessWidget {
       children: <Widget>[
         Text(
           this.title,
-          style: TextStyle(
-            fontSize: 12.0,
-            fontWeight: FontWeight.w500,
-            color: this.textColor,
-          ),
+          style: earningsLabelStyle,
         ),
         Text(
           this.value,
-          style: TextStyle(
-            fontSize: 48.0,
-            fontWeight: FontWeight.w700,
-            color: this.textColor,
-          ),
+          style: earningsValueStyle,
         )
       ],
     );
@@ -63,8 +53,6 @@ class EarningsCell extends StatelessWidget {
 class _EarningsPageState extends State<EarningsPage> {
   final currencyFormatter =
       NumberFormat.currency(symbol: "\$", decimalDigits: 0);
-  final Color controlShadowColor = Color.fromRGBO(167, 170, 187, 0.9);
-  final Color purpleTextColor = const Color.fromRGBO(46, 10, 86, 1.0);
 
   Widget _buildUnimplementedChild(BuildContext context, String title) {
     return Center(
@@ -78,7 +66,7 @@ class _EarningsPageState extends State<EarningsPage> {
           padding: EdgeInsets.symmetric(horizontal: 10.0),
           child: Text(
             title,
-            style: Theme.of(context).textTheme.display3,
+            style: actionStyle,
           ),
         ),
       ),
@@ -120,10 +108,7 @@ class _EarningsPageState extends State<EarningsPage> {
         // Set the app bar to transparent to just have the hamburger button and
         // title
         centerTitle: true,
-        title: Text(
-          "EARNINGS",
-          style: Theme.of(context).textTheme.display4,
-        ),
+        title: Text("EARNINGS", style: titleStyle),
         backgroundColor: Colors.transparent,
         elevation: 0.0,
         iconTheme: Theme.of(context).iconTheme,
@@ -154,7 +139,7 @@ class _EarningsPageState extends State<EarningsPage> {
                             margin: EdgeInsets.symmetric(horizontal: 6.0),
                             child: Text(
                               "July 1 - 31, 2020",
-                              style: Theme.of(context).textTheme.display3,
+                              style: actionStyle,
                             ),
                           ),
                         ],
@@ -172,8 +157,7 @@ class _EarningsPageState extends State<EarningsPage> {
                               direction: "down",
                               source: "images/icons/pie.png"),
                           _buildButton(context,
-                              direction: "up",
-                              source: "images/icons/line.png"),
+                              direction: "up", source: "images/icons/line.png"),
                         ],
                       ),
                     ),
@@ -220,25 +204,16 @@ class _EarningsPageState extends State<EarningsPage> {
                           children: <Widget>[
                             Text(
                               "TOTAL EARNINGS",
-                              style: TextStyle(
-                                fontSize: 12.0,
-                                fontWeight: FontWeight.w500,
-                                letterSpacing: 1.1,
-                                color: purpleTextColor,
-                              ),
+                              style: earningsLabelStyle,
                             ),
                             AutoSizeText(
                               currencyFormatter.format(user.totalEarnings),
                               maxLines: 1,
-                              style: TextStyle(
-                                fontSize: 48.0,
-                                fontWeight: FontWeight.w700,
-                                color: purpleTextColor,
-                              ),
+                              style: earningsValueStyle,
                             ),
                             SizedBox(
                               height: 10.0,
-                            )
+                            ),
                           ],
                         ),
                       ),
@@ -274,22 +249,21 @@ class _EarningsPageState extends State<EarningsPage> {
                         crossAxisCount: 2,
                         children: <Widget>[
                           EarningsCell(
-                              title: "SERVICES / SALES",
-                              value: user.servicesToSales.toString(),
-                              textColor: purpleTextColor),
+                            title: "SERVICES / SALES",
+                            value: user.servicesToSales.toString(),
+                          ),
                           EarningsCell(
-                              title: "AVERAGE SALE",
-                              value:
-                                  currencyFormatter.format(user.averageSale),
-                              textColor: purpleTextColor),
+                            title: "AVERAGE SALE",
+                            value: currencyFormatter.format(user.averageSale),
+                          ),
                           EarningsCell(
-                              title: "RETURNS",
-                              value: currencyFormatter.format(user.returns),
-                              textColor: purpleTextColor),
+                            title: "RETURNS",
+                            value: currencyFormatter.format(user.returns),
+                          ),
                           EarningsCell(
-                              title: "DISCOUNTS",
-                              value: user.discounts.toString(),
-                              textColor: purpleTextColor),
+                            title: "DISCOUNTS",
+                            value: user.discounts.toString(),
+                          ),
                         ],
                       ),
                     ),
