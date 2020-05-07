@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 
 import 'earnings_page.dart';
 import 'main_page.dart';
+import 'messages_page.dart';
 import 'theme.dart';
 import 'user_model.dart';
 
@@ -22,6 +23,7 @@ class MyApp extends StatelessWidget {
       routes: {
         '/': (context) => MainPage(),
         '/earnings': (context) => EarningsPage(),
+        '/messages': (context) => MessagesPage(),
       },
       theme: ThemeData(
         fontFamily: 'Montserrat',

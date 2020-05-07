@@ -1,4 +1,3 @@
-import 'package:alphacrm/theme.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -6,6 +5,7 @@ import 'package:provider/provider.dart';
 import 'alerts.dart';
 import 'alpha_drawer.dart';
 import 'main_page_button.dart';
+import 'theme.dart';
 import 'user_model.dart';
 
 class MainPage extends StatefulWidget {
@@ -51,7 +51,7 @@ class _MainPageState extends State<MainPage> {
               child: Container(
                 margin: const EdgeInsets.only(left: 20.0),
                 alignment: Alignment.centerLeft,
-                child: new Column(
+                child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
@@ -123,6 +123,9 @@ class _MainPageState extends State<MainPage> {
                 MainPageButton(
                   title: "Messages",
                   image: Image.asset("images/messages.png"),
+                  onPressed: () {
+                    Navigator.of(context).pushNamed('/messages');
+                  },
                 ),
               ],
             ),

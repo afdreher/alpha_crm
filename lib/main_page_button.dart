@@ -20,7 +20,7 @@ class MainPageButton extends StatelessWidget {
           widthFactor: 1.0,
           heightFactor: 0.4,
         child: Container(
-          padding: EdgeInsets.fromLTRB(20.0, 15.0, 10.0, 0.0),
+          padding: EdgeInsets.fromLTRB(20.0, 20.0, 10.0, 0.0),
           child: AutoSizeText(
             this.title,
             textAlign: TextAlign.left,

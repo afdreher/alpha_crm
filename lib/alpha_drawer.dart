@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
-import 'package:path/path.dart';
 
 import 'alerts.dart';
 import 'alpha_list_tile.dart';
-import 'earnings_page.dart';
-import 'main_page.dart';
 
 class AlphaDrawer extends StatelessWidget {
+  void _pushRoute(BuildContext context, String routeName) {
+    Navigator.of(context).pop();
+    if (ModalRoute.of(context).settings.name != routeName) {
+      Navigator.of(context)
+          .pushNamedAndRemoveUntil(routeName, ModalRoute.withName('/'));
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return FractionallySizedBox(
@@ -56,10 +60,7 @@ class AlphaDrawer extends StatelessWidget {
             AlphaListTile(
               title: "Earnings",
               onTap: () {
-                Navigator.of(context).pop();
-                if (ModalRoute.of(context).settings.name != "/earnings") {
-                  Navigator.of(context).pushNamedAndRemoveUntil('/earnings', ModalRoute.withName('/'));
-                }
+                _pushRoute(context, '/earnings');
               },
             ),
             AlphaListTile(
@@ -82,7 +83,9 @@ class AlphaDrawer extends StatelessWidget {
             ),
             AlphaListTile(
               title: "Messages",
-              onTap: () {},
+              onTap: () {
+                _pushRoute(context, '/messages');
+              },
             ),
           ],
         ),

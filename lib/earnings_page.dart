@@ -1,13 +1,13 @@
-import 'package:alphacrm/alpha_drawer.dart';
-import 'package:alphacrm/alpha_elevation.dart';
-import 'package:alphacrm/clippers.dart';
-import 'package:alphacrm/clip_shadow_path.dart';
-import 'package:alphacrm/alpha_segmented_control.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
+import 'alpha_app_bar.dart';
+import 'alpha_elevation.dart';
+import 'alpha_segmented_control.dart';
+import 'clippers.dart';
+import 'clip_shadow_path.dart';
 import 'theme.dart';
 import 'user_model.dart';
 
@@ -104,21 +104,12 @@ class _EarningsPageState extends State<EarningsPage> {
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
     return Scaffold(
-      appBar: AppBar(
-        // Set the app bar to transparent to just have the hamburger button and
-        // title
-        centerTitle: true,
-        title: Text("EARNINGS", style: titleStyle),
-        backgroundColor: Colors.transparent,
-        elevation: 0.0,
-        iconTheme: Theme.of(context).iconTheme,
-      ),
-      // drawer: AlphaDrawer(),
+      appBar: AlphaAppBar(title: "earnings"),
       body: SafeArea(
         child: Consumer<UserModel>(builder: (context, user, child) {
           return Column(
             mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
               Row(
                 children: <Widget>[
@@ -262,7 +253,7 @@ class _EarningsPageState extends State<EarningsPage> {
                           ),
                           EarningsCell(
                             title: "DISCOUNTS",
-                            value: user.discounts.toString(),
+                            value: currencyFormatter.format(user.discounts),
                           ),
                         ],
                       ),
